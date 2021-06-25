@@ -1,0 +1,41 @@
+﻿@model WebApplication1.Fines
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Информация о штрафе</h2>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Водитель
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IdDriverNavigation.Name)
+        </dd>
+        <dt class="col-sm-2">
+            Описание штрафа
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IdFineNavigation.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DateFine)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DateFine)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PhotoFine)
+        </dt>
+        <dd class="col-sm-10">
+            <img src="~/photo/Fines/@Html.DisplayFor(model => model.PhotoFine)" width="500" style="border-radius:10px" class="img-fluid hover-shadow" id="img"/>
+        </dd>
+    </dl>
+</div>
+<div style="margin-top:20vh">
+    <a asp-action="Edit" asp-route-id="@Model.Id">Редактировать</a> |
+    <a asp-action="Index">Вернуться к списку</a>
+</div>

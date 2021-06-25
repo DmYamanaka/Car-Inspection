@@ -1,0 +1,70 @@
+﻿@model IEnumerable<WebApplication1.Fines>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Штрафы</h2>
+<div class="row">
+    <div class="col-4">
+        <a asp-action="Create">
+            <button asp-action="Create" type="button" class="btn btn-success">Добавить штраф</button>
+        </a>
+    </div>
+    <div class="col-4"></div>
+    <div class="col-4">
+        <div>
+            <a href="/Fines/ExportExcel">
+                <button type="button" class="btn btn-light" data-mdb-ripple-color="dark">
+                    <div style="text-decoration:none; color:black">
+                        Экспорт в excel <img src="~/photo/export.png" width="30" height="30">
+                    </div>
+                   </button>
+            </a>
+    </div>
+    </div>
+</div>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                Водители
+            </th>
+            <th>
+                Описание штрафа
+            </th>
+            <th>
+                Дата
+            </th>
+            <th>
+                Размер штрафа
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                <a class="text-dark" asp-controller="Drivers" asp-action="Details" asp-route-id="@item.IdDriver">@Html.DisplayFor(modelItem => item.IdDriverNavigation.Name)</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdFineNavigation.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateFine)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdFineNavigation.Fine) руб.
+            </td>
+            <td width="150">
+                <a asp-action="Edit" asp-route-id="@item.Id"><i class="far fa-edit fa-2x"></i></a>
+                <a asp-action="Details" asp-route-id="@item.Id"><i class="far fa-list-alt fa-2x"></i></a>
+                <a asp-action="Delete" asp-route-id="@item.Id"><i class="fas fa-trash-alt fa-2x" style="color:tomato"></i></a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

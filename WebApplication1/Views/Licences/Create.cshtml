@@ -1,0 +1,51 @@
+﻿@model WebApplication1.Licence
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Добавление лицензии</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="IdDriver" class="control-label"></label>
+                <select asp-for="IdDriver" class="form-control" asp-items="ViewBag.IdDriver"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="LicenceDate" class="control-label"></label>
+                <input asp-for="LicenceDate" class="form-control" />
+                <span asp-validation-for="LicenceDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ExpireDate" class="control-label"></label>
+                <input asp-for="ExpireDate" class="form-control" />
+                <span asp-validation-for="ExpireDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Categories" class="control-label"></label>
+                <input asp-for="Categories" class="form-control" />
+                <span asp-validation-for="Categories" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LicenceSeries" class="control-label"></label>
+                <input asp-for="LicenceSeries" class="form-control" />
+                <span asp-validation-for="LicenceSeries" class="text-danger"></span>
+            </div>
+            <br/>
+            <div class="form-group">
+                <input type="submit" value="Добавить" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div style="margin-bottom:23.8vh">
+    <a asp-action="Index">Вернуться к списку</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

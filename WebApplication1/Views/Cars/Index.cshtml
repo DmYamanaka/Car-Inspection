@@ -1,0 +1,89 @@
+﻿@model IEnumerable<WebApplication1.Cars>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Список автомобилей</h2>
+    <div class="row">
+        <div class="col-4">
+        <a asp-action="Create">
+        <button asp-action="Create" type="button" class="btn btn-success">Добавить автомобиль</button>
+    </a></div>
+        <div class="col-4"></div>
+        <div class="col-4"><form asp-controller="Cars" asp-action="Index">
+        <p>
+            Гос номер: <input type="text" name="SearchString"/>
+            <input type="submit" value="Поиск" />
+        </p>
+    </form></div>
+    </div>
+
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Vin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StateNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Manufacturer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ColorNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Year)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdDriverNavigation)
+            </th>
+            <th>ДТП</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StateNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Manufacturer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ColorNavigation.ColorName)
+                <div> <i class="fas fa-car-side fa-3x" style="color:@item.ColorNavigation.ColorCode"></i></div>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Year)
+            </td>
+            <td>
+                <a class="text-dark" asp-controller="Drivers" asp-action="Details" asp-route-id="@item.IdDriver">@Html.DisplayFor(modelItem => item.IdDriverNavigation.Name)</a>
+            </td>
+            <td>
+                @if (item.Dtp == true)
+                {
+                    <i class="fas fa-exclamation-circle fa-2x" title="Автомобиль был в ДТП!"></i>
+                }
+            </td>
+            <td width="150">
+                <a asp-action="Edit" asp-route-id="@item.CarId"><i class="far fa-edit fa-2x"></i></a>
+                <a asp-action="Details" asp-route-id="@item.CarId"><i class="far fa-list-alt fa-2x"></i></a>
+                <a asp-action="Delete" asp-route-id="@item.CarId"><i class="fas fa-trash-alt fa-2x" style="color:tomato"></i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

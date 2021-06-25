@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "resourceId": null,
+      "type": "mssql.local",
+      "connectionId": "DefaultConnection",
+      "secretStore": null
+    },
+    "mssql2": {
+      "type": "mssql.local",
+      "connectionId": "WebApplication1ContextConnection"
+    },
+    "mssql3": {
+      "type": "mssql.local",
+      "connectionId": "ApplicationContextConnection"
+    }
+  }
+}

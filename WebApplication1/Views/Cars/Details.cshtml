@@ -1,0 +1,86 @@
+﻿@model WebApplication1.Cars
+
+@{
+    ViewData["Title"] = "Details";
+}
+<div style="margin-bottom:9.6vh">
+    <div style="background-color: aliceblue;border-radius: 10px;padding: 7px">
+        <h2>Информация о автомобиле</h2>
+
+        <div>
+            <hr />
+            <dl class="row">
+                <table class="table table-borderless" style="font-size:16px">
+                    <thead>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.Vin)</th>
+                            <th>@Html.DisplayNameFor(model => model.StateNumber)</th>
+                            <th>@Html.DisplayNameFor(model => model.IdDriverNavigation)</th>
+                            <th>@Html.DisplayNameFor(model => model.ColorNavigation)</th>
+                            <th>@Html.DisplayNameFor(model => model.Manufacturer)</th>
+                            <th>@Html.DisplayNameFor(model => model.Model)</th>
+                            <th>@Html.DisplayNameFor(model => model.Year)</th>
+                            <th>@Html.DisplayNameFor(model => model.Weight)</th>
+                            <th>@Html.DisplayNameFor(model => model.EngineType)</th>
+                            <th>@Html.DisplayNameFor(model => model.TypeOfDrive)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>@Html.DisplayFor(model => model.Vin)</td>
+                            <td>@Html.DisplayFor(model => model.StateNumber)</td>
+                            <td>@Html.DisplayFor(model => model.IdDriverNavigation.Name)</td>
+                            <td>@Html.DisplayFor(model => model.ColorNavigation.ColorName)</td>
+                            <td>@Html.DisplayFor(model => model.Manufacturer)</td>
+                            <td>@Html.DisplayFor(model => model.Model)</td>
+                            <td>@Html.DisplayFor(model => model.Year)</td>
+                            <td>@Html.DisplayFor(model => model.Weight)</td>
+                            <td>@Html.DisplayFor(model => model.EngineType)</td>
+                            <td>@Html.DisplayFor(model => model.TypeOfDrive)</td>
+                        </tr>
+                    </tbody>
+                </table>
+        </div>
+    </div>
+    <br />
+    <div style="background-color:antiquewhite; border-radius: 10px; padding:7px">
+        <h2>Информация о ДТП</h2>
+        <hr />
+        @if (Model.Dtp == true)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.DateDtp)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.DateDtp)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.PhotoDtp)
+            </dt>
+            <dd class="col-6">
+                <img src="~/photo/DTP/@Html.DisplayFor(model => model.PhotoDtp)" style="border-radius:10px" class="img-fluid hover-shadow" id="img" />
+            </dd>
+
+        }
+        else
+        {
+            <div class="row" style="padding:1px">
+                <div class="col-4">
+                </div>
+                <div class="col-4" style="margin-left:110px">
+                    <i class="fas fa-check-circle fa-7x" style="color:green; margin-left:50px"></i>
+                    <h4 style="margin-left:53px">Нет ДТП!</h4>
+                </div>
+                <div class="col-4">
+                </div>
+
+            </div>
+        }
+    </div>
+
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.CarId">Редактировать</a> |
+        <a asp-action="Index">Вернуться к списку</a>
+    </div>
+</div>
+

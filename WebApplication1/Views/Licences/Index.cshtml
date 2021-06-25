@@ -1,0 +1,78 @@
+﻿@model IEnumerable<WebApplication1.Licence> 
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Список водительских лицензий</h2>
+<div class="row">
+    <div class="col-4"><a asp-action="Create">
+    <button asp-action="Create" type="button" class="btn btn-success">Добавить лицензию</button>
+</a>
+    </div>
+    <div class="col-4"></div>
+    <div class="col-4">
+        <form asp-controller="Licences" asp-action="Index">
+            <p>
+                Номер лицензии <input type="text" name="SearchString" />
+                <input type="submit" value="Поиск" />
+            </p>
+        </form>
+    </div>
+</div>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.LicenceNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LicenceDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExpireDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Categories)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LicenceSeries)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdDriverNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LicenceNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LicenceDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ExpireDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Categories)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LicenceSeries)
+                </td>
+                <td>
+                    <a class="text-dark" asp-controller="Drivers" asp-action="Details" asp-route-id="@item.IdDriver">@Html.DisplayFor(modelItem => item.IdDriverNavigation.Name)</a>
+                </td>
+                <td width="150">
+                    <a asp-action="Edit" asp-route-id="@item.LicenceNumber"><i class="far fa-edit fa-2x"></i></a>
+                    <a asp-action="Details" asp-route-id="@item.LicenceNumber"><i class="far fa-list-alt fa-2x"></i></a>
+                    <a asp-action="Delete" asp-route-id="@item.LicenceNumber"><i class="fas fa-trash-alt fa-2x" style="color:tomato"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,105 @@
+﻿@model WebApplication1.Cars
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Редактирование информации о автомобиле</h2>
+<hr />
+<form asp-action="Edit" method="post" enctype="multipart/form-data">
+    <div class="row">
+        <div class="col-md-4">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="CarId" />
+            <div class="form-group">
+                <label asp-for="IdDriver" class="control-label"></label>
+                <select asp-for="IdDriver" class="form-control" asp-items="ViewBag.IdDriver"></select>
+                <span asp-validation-for="IdDriver" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Vin" class="control-label"></label>
+                <input asp-for="Vin" class="form-control" />
+                <span asp-validation-for="Vin" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Manufacturer" class="control-label"></label>
+                <input asp-for="Manufacturer" class="form-control" />
+                <span asp-validation-for="Manufacturer" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Model" class="control-label"></label>
+                <input asp-for="Model" class="form-control" />
+                <span asp-validation-for="Model" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Year" class="control-label"></label>
+                <input asp-for="Year" class="form-control" />
+                <span asp-validation-for="Year" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Weight" class="control-label"></label>
+                <input asp-for="Weight" class="form-control" />
+                <span asp-validation-for="Weight" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Color" class="control-label"></label>
+                <select asp-for="Color" class="form-control" asp-items="ViewBag.Color"></select>
+                <span asp-validation-for="Color" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EngineType" class="control-label"></label>
+                <select class="form-control" asp-for="EngineType">
+                    <option>бензин</option>
+                    <option>дизель</option>
+                    <option>газ</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="StateNumber" class="control-label"></label>
+                <input asp-for="StateNumber" class="form-control" />
+                <span asp-validation-for="StateNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TypeOfDrive" class="control-label"></label>
+                <select class="form-control" asp-for="TypeOfDrive">
+                    <option>передний привод</option>
+                    <option>полный привод</option>
+                    <option>задний привод</option>
+                </select>
+            </div>
+            <br>
+            <div class="form-group">
+                <input type="submit" value="Сохранить" class="btn btn-primary" />
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="Dtp" class="control-label">Был в ДТП?</label>
+                <select asp-for="Dtp" class="form-control">
+                    <option>False</option>
+                    <option>True</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateDtp" class="control-label"></label>
+                <input asp-for="DateDtp" class="form-control" />
+                <span asp-validation-for="DateDtp" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhotoDtp" class="control-label"></label>
+                <input asp-for="PhotoDtp" class="form-control" />
+                <span asp-validation-for="PhotoDtp" class="text-danger"></span>
+                <br/>
+                <input asp-for="PhotoDtp" type="file" name="uploadedFile" /><br>
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Вернуться к списку</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
