@@ -14,7 +14,9 @@
 ![image](https://user-images.githubusercontent.com/54627640/195140554-b5aa7b80-9605-4c98-92e3-44fd59f600c6.png)
 ![image](https://user-images.githubusercontent.com/54627640/195140706-6a3eea35-1900-441c-974b-1476a0ead085.png)
 ![image](https://user-images.githubusercontent.com/54627640/195140992-c9224d8b-90e4-4155-ae08-e09adf5866f0.png)
-## Информацию о штрафах можно експортировать в Excel
+
+## Информацию о штрафах можно сделать в виде Excel отчёта
+
 ![image](https://user-images.githubusercontent.com/54627640/195144526-6b21a83e-3c41-4d11-b06c-e0ebf82c7c49.png)
 ![image](https://user-images.githubusercontent.com/54627640/195142367-ff192f57-d931-4003-b2dd-652e5fb3e867.png)
 
