@@ -3,7 +3,7 @@
 
 <img src="https://user-images.githubusercontent.com/54627640/195137862-2c30920e-11b6-4c89-ac8f-f9b56861a3fa.png">
 
-## Регистрации и авторизации пользователя
+## Регистрация и авторизация пользователя
 
 ![image](https://user-images.githubusercontent.com/54627640/195139864-9d546470-d2ac-4ded-8137-daf4acaec4eb.png)
 ![image](https://user-images.githubusercontent.com/54627640/195139843-da2d42d8-3106-42a4-b542-444ae42944cc.png)
